@@ -29,8 +29,6 @@ Missile Position subsystem file. Uses geometry to track missile position.
 **target_motion_subsystem.slx**:\
 Target Motion subsystem file. Uses geometry to track target position. Includes launch command for interceptor missile based on ground range from target.
 
-# Current Version Simulation Results
-
 # Future Work
 1. Update to a 3D model/simulation, and include a yaw rate autopilot.
 2. Create "Battle Management" subsystem.
