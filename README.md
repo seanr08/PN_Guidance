@@ -6,7 +6,7 @@ All work is my own unless otherwise stated.
 
 # File Descriptions and Instructions
 **PNG3.slx**:\
-Main simulation file. Includes Scope and/or Display blocks for range, Missile and Target X and Z positions, and acceleration ccommands. PN_Guidance_matlab.m needs to be executed before running the simulation, as it contains all initial conditions and control gains.
+Main simulation file. Includes Scope and/or Display blocks for range, Missile and Target X and Z positions, and acceleration ccommands. PN_Guidance_matlab.m needs to be executed before running the simulation, as it contains all initial conditions and control gains. Also before executing, 1) ensure persistent variables are enabled (Simulation tab --> Model Settings --> Search Bar --> search "persistent" and enable), and 2) disable zero-crossing errors (Simulation tab --> Model Settings --> Search Bar --> search "zero crossing" and disable).
 
 **PN_Guidance_matlab.m**:\
 File containing initial conditions and control gains. Execute before running PNG3.slx.
