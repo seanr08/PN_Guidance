@@ -30,7 +30,7 @@ Missile Position subsystem file. Uses geometry to track missile position.
 Target Motion subsystem file. Uses geometry to track target position. Includes launch command for interceptor missile based on ground range from target.
 
 # Future Work
-1. Update to a 3D model/simulation, and include a yaw rate autopilot.
-2. Create "Battle Management" subsystem.
-3. Create "Homing Sensor" subsystem.
-4. Include IMU noise model, wind model, and radome effects model into the simulation.
+1. Update to a 3D model/simulation, and include a yaw rate autopilot. Expected March 2025.
+2. Create "Battle Management" subsystem. Expected March 2025.
+3. Create "Homing Sensor" subsystem. Expected March 2025.
+4. Include IMU noise model, wind model, and radome effects model into the simulation. Expected April 2025.
