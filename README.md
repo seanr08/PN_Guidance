@@ -1,5 +1,7 @@
 # Proportional Navigation Missile Autopilot and Simulation
-The files in this repository are the engineering work that support the guidance, navigation, and control subsystem for my low-cost anti-missile missile senior design project. 
+The files in this repository are the engineering work that support the guidance, navigation, and control subsystem for my low-cost anti-missile missile senior design project. I primarily worked on the autopilot design, which used PID compensators to control the body-lateral accelerations, and designing and building a simulation to test the pursuer trajectories against threat missiles.
+
+![Simulation Flow Diagram](https://github.com/seanr08/PN_Guidance/blob/main/Images/sim_flow.png) 
 
 ## File Descriptions
 ### pronav_main_script.m:
