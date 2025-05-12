@@ -1,5 +1,5 @@
 # Proportional Navigation Missile Autopilot and Simulation
-The files in this repository are the engineering work that support the guidance, navigation, and control subsystem for my low-cost anti-missile missile senior design project. I primarily worked on the autopilot design, which used PID compensators to control the body-lateral accelerations, and designing and building a simulation to test the pursuer trajectories against threat missiles.
+The files in this repository are the engineering work that support the guidance, navigation, and control subsystem for my low-cost anti-missile missile senior design project. I primarily worked on the autopilot design, which used PID compensators to control the body-lateral accelerations, and designing and building a simulation to test the pursuer trajectories against threat missiles. The guidance law used to compute the acceleration commands was Zero-Effort-Miss (ZEM), which is derived from the classical Pro-Nav guidance law. The governing equation is $a_{cmd}=\frac{N*ZEM}{t_{go}^2}$, where $N$ is an arbitrarily selected navigation gain, $ZEM$ is the Zero-Effort-Miss vector, and $t_{go}$ is the time-to-go estimated to intercept. Information on ZEM and its derivation can found here: [ZEM](https://secwww.jhuapl.edu/techdigest/Content/techdigest/pdf/V29-N01/29-01-Palumbo_Homing.pdf)
 
 ![Simulation Flow Diagram](https://github.com/seanr08/PN_Guidance/blob/main/Images/sim_flow.png) 
 
@@ -36,7 +36,9 @@ The autopilot design uses a PID compensator to control canard servos and airfram
 
 In order to use the full closed-loop transfer function $T(s)=\frac{49.83s^2+1383s+2265}{0.0621s^4+4.374s^3+205.1s^2+1383s+2265}$ with the PID compensator in the integration solver (ode45), the transfer function was converted into state-space form using MATLAB's *ss* function. The resulting state-space matrices corresponding to the equations $\dot{x}=Ax+Bu$, $y=Cx$ were
 
+![State-Space Representation of the CL Transfer Function](https://github.com/seanr08/PN_Guidance/blob/main/Images/ss_matrices.png) \
 
+with $u=a_{cmd}$ serving as the input variable. Due to the nature of the *ss* function used for this conversion, the state variables are unknown; however, the output variable $y=Cx$, which is $a_{act}$ is what is needed for the simulation, so I set $\mathbf{x}(0)=\mathbf{0}$.
 
 ## Simulation Results
 A total of 967 scenarios were run for the simulation (if that seems like an odd number, it is: I tried running 1000 but the computer quit before getting there). For each scenario, the miss distance and probability of kill were recorded. 3D trajectory plots were generated for each scenario showing the pursuer's trajectory intercepting the target. The mean miss distance was 4.5 ft, with a standard deviation of 1.5 ft, and a mean probability of kill of 79%. The failure rate was 7%, which was computed as the number of intercepts with a miss distance of greater than 50 ft. Assuming the probability of kill of a miss of greater than 50 ft is 0%, the computed success rate is 73%. Plots of a sample trajectory, distribution of miss distance, and probability of kill vs miss distance are shown below.
