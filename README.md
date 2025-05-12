@@ -32,7 +32,11 @@ Used for processing results.
 The autopilot design uses a PID compensator to control canard servos and airframe. Lateral accelerations on the body-pitch and body-yaw axes are controlled indepently in two separate channels. The vehicle has one set of canards responsible for the body-pitch axis and another for the body-yaw axis. The autopilot was designed for a rise time of 0.2 seconds and minimal overshoot (typically, tactical missile actuation times are much faster, but due to the low budget, the design required a relatively slower response speed). The overshoot for the final design was 11%, with a 5% settling time of 1s. The closed loop poles were -31 +/- 40, -6.2, and -3.5. Shown below are the closed-loop step response and root locus plots.
 
 ![Step Response](https://github.com/seanr08/PN_Guidance/blob/main/Images/CL_Step.png) \
-![Root Locus](https://github.com/seanr08/PN_Guidance/blob/main/Images/CL_Root_Locus.png)
+![Root Locus](https://github.com/seanr08/PN_Guidance/blob/main/Images/CL_Root_Locus.png) \
+
+In order to use the full closed-loop transfer function $T(s)=\frac{49.83s^2+1383s+2265}{0.0621s^4+4.374s^3+205.1s^2+1383s+2265}$ with the PID compensator in the integration solver (ode45), the transfer function was converted into state-space form using MATLAB's *ss* function. The resulting state-space matrices corresponding to the equations $\dot{x}=Ax+Bu$, $y=Cx$ were
+
+
 
 ## Simulation Results
 A total of 967 scenarios were run for the simulation (if that seems like an odd number, it is: I tried running 1000 but the computer quit before getting there). For each scenario, the miss distance and probability of kill were recorded. 3D trajectory plots were generated for each scenario showing the pursuer's trajectory intercepting the target. The mean miss distance was 4.5 ft, with a standard deviation of 1.5 ft, and a mean probability of kill of 79%. The failure rate was 7%, which was computed as the number of intercepts with a miss distance of greater than 50 ft. Assuming the probability of kill of a miss of greater than 50 ft is 0%, the computed success rate is 73%. Plots of a sample trajectory, distribution of miss distance, and probability of kill vs miss distance are shown below.
